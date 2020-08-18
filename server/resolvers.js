@@ -1,5 +1,11 @@
+const db = require("./db");
+
 const Query = {
-  greeting: () => "hello world",
+  jobs: () => db.jobs.list(),
 };
 
-module.exports = { Query };
+const Job = {
+  company: (parentJob) => db.companies.get(parentJob.companyId),
+};
+
+module.exports = { Query, Job };
